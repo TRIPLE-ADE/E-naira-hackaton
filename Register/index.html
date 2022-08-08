@@ -12,27 +12,121 @@
         <a href=""><img src="../logo.jpg" alt="" width="10%"></a>
     </header>
     <main>
-        <h1>welcome back!</h1>
+        <h1>create new account</h1>
         <span>Login here</span>
         <div class="container"> 
            <form action="" method="post">
             <label for="name">Name</label>
             <input type="text" name="name" id="name">
-
-            <label for="email">Email</label>
+            <span id="name-error" class="error">Name cannot be empty</span> 
+            
+            <label for="email">Email:</label>
             <input type="email" name="email" id="email">
+            <span id="email-error" class="error">Looks like this is not an email</span>
+
 
             <label for="phone">Phone number</label>
             <input type="tel" name="phone" id="phone">
+            <span id="phone-error" class="error">Phone Number cannot be empty</span> 
 
             <label for="password">Password</label>
             <input type="password" name="password" id="password">
+            <span id="password-error" class="error">Password cannot be empty</span> 
 
-            <button type="submit">Create an Account</button>
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" name="confirm-password" id="confirm-password">
+            <span id="confirm-error" class="error">Password must match</span> 
+
+            <button type="submit" id="submit">Create an Account</button>
            </form>
         </div>
     </main>
 
-    script
+    <script>
+        const form = document.querySelector('form');
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const phoneNumber = document.getElementById('phone');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirm-password');
+        const nameError = document.getElementById('name-error');
+        const emailError = document.getElementById('email-error');
+        const phoneError = document.getElementById('phone-error');
+        const passwordError =document.getElementById('password-error'); 
+        const confirmError =document.getElementById('confirm-error'); 
+        const submitBtn = document.getElementById('submit');
+
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+        });
+
+        submitBtn.addEventListener("click", (event) =>{
+            if (name.value === "") {
+                nameError.style.display = "inline";
+                name.style.borderColor = '#e74c3c';
+            } else {
+                name.style.borderColor = 'green';
+
+            }
+            setTimeout(() => {
+                nameError.style.display = "none";
+                name.style.borderColor = '#962be7';
+            }, 3000);
+            
+            
+            if (email.value === "") {
+                emailError.style.display = "inline";
+                email.style.borderColor = '#e74c3c';
+            } else {
+                email.style.borderColor = 'green';
+
+            }
+            setTimeout(() => {
+                emailError.style.display = "none";
+                email.style.borderColor = '#962be7';
+            }, 3000);
+            
+            if (phoneNumber.value === "") {
+                phoneError.style.display = "inline";
+                phoneNumber.style.borderColor = '#e74c3c';
+            } else {
+                phoneNumber.style.borderColor = 'green';
+
+            }
+            setTimeout(() => {
+                phoneError.style.display = "none";
+                phoneNumber.style.borderColor = '#962be7';
+            }, 3000);
+            
+            if (password.value === "") {
+                passwordError.style.display = "inline";
+                password.style.borderColor = '#e74c3c';
+            } else {
+                password.style.borderColor = 'green';
+
+            }
+            setTimeout(() => {
+                passwordError.style.display = "none";
+                password.style.borderColor = '#962be7';
+            }, 3000);
+            
+            
+            if (confirmPassword.value !== password) {
+                confirmError.style.display = "inline";
+                confirmPassword.style.borderColor = '#e74c3c';
+            } else {
+                confirmPassword.style.borderColor = 'green';
+
+            }
+            setTimeout(() => {
+                confirmError.style.display = "none";
+                confirmPassword.style.borderColor = '#962be7';
+            }, 3000);
+
+        });
+
+    </script>
+
 </body>
 </html>
